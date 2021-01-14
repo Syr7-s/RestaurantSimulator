@@ -1,7 +1,9 @@
 package org.kodluyoruz;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Restaurant {
     static final int RESTAURANT_TABLE_COUNT = 5;
@@ -19,6 +21,7 @@ public class Restaurant {
     static HashMap<Cook, String> cookOrderClaim = new HashMap<>();
     static HashMap<Cook, Integer> cookOrderNumClaim = new HashMap<>();
 
+    static List<Integer> cookCompletedOrders = new ArrayList<>();
     static int customerCount;
 
     public Restaurant(int customerCount) {
@@ -91,6 +94,7 @@ public class Restaurant {
     static String cookGetOrder(Cook cook) {
         return cookOrderClaim.remove(cook);
     }
+
 
 
 }
