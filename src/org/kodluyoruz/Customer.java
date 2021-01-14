@@ -42,7 +42,7 @@ public class Customer implements Runnable {
                 if (Restaurant.checkOrderCompleted(customerOrderNumber)) {
                     System.out.println("The Customer " + this.customerName + "   received the number+" + customerOrderNumber + " " + food + "order she wanted on time.");
                     System.out.println("The Customer " + this.customerName + " is eating food.");
-                    Thread.sleep(300);
+                    //Thread.sleep(300);
                     System.out.println(this.customerName + " is leaving from Restaurant");
                 } else {
                     System.out.println(this.customerName + " adli musterinin siparisi bazı aksaklıklardan dolayı tamamlanamadi.\n" +
