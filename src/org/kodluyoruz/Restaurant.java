@@ -43,15 +43,21 @@ public class Restaurant {
         orderPlaced.put(orderNum, food);
     }
 
-    static void orderAvailable(Waiter waiter) {
+    static boolean orderAvailable(Waiter waiter) {
         if (!orderPlaced.isEmpty()) {
             try {
                 int orderNum = orderList.pop();
-
-            }catch (RuntimeException exception){
-
+                waiterOrderList.add(orderNum);
+                waiterOrderPlaced.put(orderNum, orderPlaced.get(orderNum));
+                waiterOrderClaim.put(waiter,orderPlaced.get(orderNum));
+                waiterOrderNumClaim.put(waiter,orderNum);
+                return true;
+            } catch (RuntimeException exception) {
+                System.out.println("Order is not available. We are sorry.");
+                return false;
             }
-        }
+
+        }else return false;
     }
 
 }
