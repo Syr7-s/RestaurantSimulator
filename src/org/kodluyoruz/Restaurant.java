@@ -61,5 +61,17 @@ public class Restaurant {
 
         }else return false;
     }
-
+    static boolean cookOrderAvailable(Cook cook){
+        if (!waiterOrderPlaced.isEmpty()){
+            try {
+                int waiterOrderNum = waiterOrderList.pop();
+                cookOrderClaim.put(cook,waiterOrderPlaced.remove(waiterOrderNum));
+                cookOrderNumClaim.put(cook,waiterOrderNum);
+                return true;
+            }catch (RuntimeException exception){
+                System.out.println("Order is not available. We are sorry.");
+                return false;
+            }
+        }else return false;
+    }
 }
