@@ -22,6 +22,7 @@ public class Restaurant {
     static HashMap<Cook, Integer> cookOrderNumClaim = new HashMap<>();
 
     static List<Integer> cookCompletedOrders = new ArrayList<>();
+    private static List<Integer> waiterCompletedOrders = new ArrayList<>();
     static int customerCount;
 
     public Restaurant(int customerCount) {
@@ -103,6 +104,7 @@ public class Restaurant {
     static boolean checkWaiterOrderStatus(int orderNum){
         return cookCompletedOrders.contains(orderNum);
     }
+
 
 
 }
