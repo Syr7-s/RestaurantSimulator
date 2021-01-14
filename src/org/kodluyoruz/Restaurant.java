@@ -95,6 +95,12 @@ public class Restaurant {
         return cookOrderClaim.remove(cook);
     }
 
+    static void cookOrderCompleted(Cook cook,int orderNum,String food){
+        cookCompletedOrders.add(orderNum);
+        System.out.println(cook.toString()+" completed the "+ food+" order number"+orderNum);
+    }
+
+
 
 
 }
