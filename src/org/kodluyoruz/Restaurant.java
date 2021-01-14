@@ -110,4 +110,7 @@ public class Restaurant {
         System.out.println(waiter.toString()+" received the completed order number "+ orderNum +"from the cook.");
     }
 
+    static boolean checkOrderCompleted(int orderNum){
+        return waiterCompletedOrders.contains(orderNum);
+    }
 }
