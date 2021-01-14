@@ -29,11 +29,11 @@ public class Customer implements Runnable {
         try {
             semaphore.acquire();
             System.out.println(this + " is entering to Restaurant.");
-            boolean enterRestaurant = false;
+          /*  boolean enterRestaurant = false;
             while (!enterRestaurant) {
                 enterRestaurant = Restaurant.enterToTheRestaurant();
-            }
-            System.out.println(this + " givint to order.");
+            }*/
+            System.out.println(this + " giving to order.");
             food = foodInstance.getFoods().get(random.nextInt(foodInstance.getFoods().size()));
             Restaurant.customerPlaceOrder(this.customerOrderNumber, food);
             Thread.sleep(2000);
@@ -52,7 +52,7 @@ public class Customer implements Runnable {
                 }
 
             }
-            Restaurant.customerLeaveRestaurant();
+          //  Restaurant.customerLeaveRestaurant();
         } catch (InterruptedException exception) {
             System.out.println("The Customer is leaving from Restaurant.\nBecause Unexpected a situation occurred.");
         }
