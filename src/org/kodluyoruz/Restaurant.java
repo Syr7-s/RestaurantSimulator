@@ -11,6 +11,11 @@ public class Restaurant {
     static LinkedList<Integer> orderList = new LinkedList<>();
     private static HashMap<Integer, String> orderPlaced = new HashMap<>();
 
+    static LinkedList<Integer> waiterOrderList = new LinkedList<>();
+    private static HashMap<Integer, String> waiterOrderPlaced = new HashMap<>();
+    private static HashMap<Waiter, String> waiterOrderClaim = new HashMap<>();
+    static HashMap<Waiter, Integer> waiterOrderNumClaim = new HashMap<>();
+
 
     static int customerCount;
 
@@ -19,22 +24,34 @@ public class Restaurant {
     }
 
     static int customerNumber;
-    static boolean enterToTheRestaurant (){
-        if (customerNumber<RESTAURANT_TABLE_COUNT){
+
+    static boolean enterToTheRestaurant() {
+        if (customerNumber < RESTAURANT_TABLE_COUNT) {
             customerNumber++;
             return true;
-        }else
+        } else
             return false;
     }
-    static void customerLeaveRestaurant(){
+
+    static void customerLeaveRestaurant() {
         customerNumber--;
     }
 
-    static void customerPlaceOrder(int orderNum,String food){
-        System.out.println("Customer order "+orderNum+" and "+food+" to order");
+    static void customerPlaceOrder(int orderNum, String food) {
+        System.out.println("Customer order " + orderNum + " and " + food + " to order");
         orderList.add(orderNum);
-        orderPlaced.put(orderNum,food);
+        orderPlaced.put(orderNum, food);
     }
 
+    static void orderAvailable(Waiter waiter) {
+        if (!orderPlaced.isEmpty()) {
+            try {
+                int orderNum = orderList.pop();
+
+            }catch (RuntimeException exception){
+
+            }
+        }
+    }
 
 }
