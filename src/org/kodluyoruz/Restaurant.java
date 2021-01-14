@@ -62,6 +62,7 @@ public class Restaurant {
         } catch (InterruptedException exception) {
             exception.printStackTrace();
         }
+        System.out.println("The Simulation is terminating.");
     }
 
     static int customerNumber;
