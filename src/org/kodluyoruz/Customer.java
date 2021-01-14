@@ -28,7 +28,7 @@ public class Customer implements Runnable {
     public void run() {
         try {
             semaphore.acquire();
-            System.out.println(this + " is entering to Restaurant.");
+            System.out.println(this.customerName + " is entering to Restaurant.");
           /*  boolean enterRestaurant = false;
             while (!enterRestaurant) {
                 enterRestaurant = Restaurant.enterToTheRestaurant();

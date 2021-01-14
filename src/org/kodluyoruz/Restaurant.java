@@ -46,7 +46,7 @@ public class Restaurant {
             executorServiceCustomer.submit(new Customer("Customer " + (i + 1), i + 1, semaphoreCustomer));
         }
         for (int i = 0; i < RESTAURANT_WAITER_COUNT; i++) {
-            executorServiceWaiter.submit(new Waiter("Cook " + (i + 1), semaphoreWaiter));
+            executorServiceWaiter.submit(new Waiter("Waiter " + (i + 1), semaphoreWaiter));
         }
         for (int i = 0; i < RESTAURANT_COOK_COUNT; i++) {
             executorServiceCook.submit(new Cook("Cook " + (i + 1), semaphoreCooker));
