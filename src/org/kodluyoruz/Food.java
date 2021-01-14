@@ -9,7 +9,7 @@ public class Food {
     private static List<String> foods = new ArrayList<>();
 
     private Food() {
-        getAllWoods();
+        getAllFoods();
     }
 
     public static Food getInstance() {
@@ -27,7 +27,7 @@ public class Food {
         Food.foods = foods;
     }
 
-    private void getAllWoods(){
+    private void getAllFoods(){
         foods.add("Soup");
         foods.add("Fish");
         foods.add("Ravioli");
