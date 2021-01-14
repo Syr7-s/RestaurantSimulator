@@ -29,4 +29,12 @@ public class Restaurant {
     static void customerLeaveRestaurant(){
         customerNumber--;
     }
+
+    static void customerPlaceOrder(int orderNum,String food){
+        System.out.println("Customer order "+orderNum+" and "+food+" to order");
+        orderList.add(orderNum);
+        orderPlaced.put(orderNum,food);
+    }
+
+
 }
