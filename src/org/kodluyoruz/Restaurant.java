@@ -51,27 +51,38 @@ public class Restaurant {
                 int orderNum = orderList.pop();
                 waiterOrderList.add(orderNum);
                 waiterOrderPlaced.put(orderNum, orderPlaced.get(orderNum));
-                waiterOrderClaim.put(waiter,orderPlaced.get(orderNum));
-                waiterOrderNumClaim.put(waiter,orderNum);
+                waiterOrderClaim.put(waiter, orderPlaced.get(orderNum));
+                waiterOrderNumClaim.put(waiter, orderNum);
                 return true;
             } catch (RuntimeException exception) {
                 System.out.println("Order is not available. We are sorry.");
                 return false;
             }
 
-        }else return false;
+        } else return false;
     }
-    static boolean cookOrderAvailable(Cook cook){
-        if (!waiterOrderPlaced.isEmpty()){
+
+    static boolean cookOrderAvailable(Cook cook) {
+        if (!waiterOrderPlaced.isEmpty()) {
             try {
                 int waiterOrderNum = waiterOrderList.pop();
-                cookOrderClaim.put(cook,waiterOrderPlaced.remove(waiterOrderNum));
-                cookOrderNumClaim.put(cook,waiterOrderNum);
+                cookOrderClaim.put(cook, waiterOrderPlaced.remove(waiterOrderNum));
+                cookOrderNumClaim.put(cook, waiterOrderNum);
                 return true;
-            }catch (RuntimeException exception){
+            } catch (RuntimeException exception) {
                 System.out.println("Order is not available. We are sorry.");
                 return false;
             }
-        }else return false;
+        } else return false;
     }
+
+    static int waiterGetOrderNum(Waiter waiter) {
+        return waiterOrderNumClaim.remove(waiter);
+    }
+
+    static String waiterGetOrder(Waiter waiter) {
+        return waiterOrderClaim.remove(waiter);
+    }
+
+
 }
