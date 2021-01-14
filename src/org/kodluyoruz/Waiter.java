@@ -21,12 +21,12 @@ public class Waiter implements Runnable {
     public void run() {
         try {
             semaphore.acquire();
-            System.out.println(this.waiterName + " waiter will take the order");
+            System.out.println(this.waiterName + " waiter will take the order.");
             for (int i = 0; i <= Restaurant.orderList.size(); i++) {
                 if (Restaurant.orderAvailable(this)) {
                     orderNum = Restaurant.waiterGetOrderNum(this);
                     food = Restaurant.waiterGetOrder(this);
-                    System.out.println("Waiter named "+this +"received the order of "+food+" number "+ orderNum);
+                    System.out.println("Waiter named "+this +" received the order of "+food+" number "+ orderNum+".");
                 } else {
                     System.out.println("Order is not for now.");
                 }
