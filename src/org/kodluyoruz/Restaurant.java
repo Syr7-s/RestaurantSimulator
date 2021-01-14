@@ -16,6 +16,8 @@ public class Restaurant {
     private static HashMap<Waiter, String> waiterOrderClaim = new HashMap<>();
     static HashMap<Waiter, Integer> waiterOrderNumClaim = new HashMap<>();
 
+    static HashMap<Cook, String> cookOrderClaim = new HashMap<>();
+    static HashMap<Cook, Integer> cookOrderNumClaim = new HashMap<>();
 
     static int customerCount;
 
