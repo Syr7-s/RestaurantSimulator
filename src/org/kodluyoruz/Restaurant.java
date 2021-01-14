@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 
 public class Restaurant {
     static final int RESTAURANT_TABLE_COUNT = 5;
@@ -23,12 +26,23 @@ public class Restaurant {
 
     static List<Integer> cookCompletedOrders = new ArrayList<>();
     private static List<Integer> waiterCompletedOrders = new ArrayList<>();
+
+    private final Semaphore semaphoreCustomer = new Semaphore(RESTAURANT_TABLE_COUNT, false);
+    private final Semaphore semaphoreWaiter = new Semaphore(RESTAURANT_WAITER_COUNT, true);
+    private final Semaphore semaphoreCooker = new Semaphore(RESTAURANT_COOK_COUNT, true);
+
+    private static final ExecutorService executorServiceCustomer = Executors.newFixedThreadPool(RESTAURANT_TABLE_COUNT);
+    private static final ExecutorService executorServiceWaiter = Executors.newFixedThreadPool(RESTAURANT_WAITER_COUNT);
+    private static final ExecutorService executorServiceCook = Executors.newFixedThreadPool(RESTAURANT_COOK_COUNT);
     static int customerCount;
 
     public Restaurant(int customerCount) {
         Restaurant.customerCount = customerCount;
     }
 
+    void startSimulation(){
+
+    }
     static int customerNumber;
 
     static boolean enterToTheRestaurant() {
