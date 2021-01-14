@@ -2,7 +2,7 @@ package org.kodluyoruz;
 
 import java.util.concurrent.Semaphore;
 
-public class Cook {
+public class Cook implements Runnable{
     private String cookName;
     private int orderNum;
     private Semaphore semaphore;
@@ -16,5 +16,10 @@ public class Cook {
     @Override
     public String toString() {
         return this.cookName;
+    }
+
+    @Override
+    public void run() {
+
     }
 }
