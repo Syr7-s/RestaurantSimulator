@@ -22,7 +22,7 @@ public class Cook implements Runnable{
     public void run() {
         try {
             semaphore.acquire();
-            System.out.println(this.cookName + " waiter will take the order\"");
+            System.out.println(this.cookName + " waiter will take the order.");
             boolean cookWaiting =true;
             while (cookWaiting) {
                 for (int i = 0; i <= Restaurant.waiterOrderList.size(); i++) {
