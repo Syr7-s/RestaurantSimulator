@@ -84,5 +84,13 @@ public class Restaurant {
         return waiterOrderClaim.remove(waiter);
     }
 
+    static int cookGetOrderNum(Cook cook) {
+        return cookOrderNumClaim.remove(cook);
+    }
+
+    static String cookGetOrder(Cook cook) {
+        return cookOrderClaim.remove(cook);
+    }
+
 
 }
