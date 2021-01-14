@@ -10,4 +10,5 @@ public class Restaurant {
     public Restaurant(int customerCount) {
         Restaurant.customerCount = customerCount;
     }
+
 }
