@@ -28,14 +28,14 @@ public class Waiter implements Runnable {
                     food = Restaurant.waiterGetOrder(this);
                     System.out.println("Waiter named "+this +"received the order of "+food+" number "+ orderNum);
                 } else {
-                    System.out.println("Order is not");
+                    System.out.println("Order is not for now.");
                 }
 
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 boolean waiterWaiting = true;
                 while (waiterWaiting) {
                     waiterWaiting = false;
-                    Thread.sleep(300);
+                    //Thread.sleep(300);
                     if (Restaurant.checkWaiterOrderStatus(orderNum)) {
                         Restaurant.waiterOrderCompleted(this, orderNum);
                     } else {
