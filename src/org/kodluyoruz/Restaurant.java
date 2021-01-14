@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 public class Restaurant {
     static final int RESTAURANT_TABLE_COUNT = 5;
@@ -27,22 +28,42 @@ public class Restaurant {
     static List<Integer> cookCompletedOrders = new ArrayList<>();
     private static List<Integer> waiterCompletedOrders = new ArrayList<>();
 
-    private final Semaphore semaphoreCustomer = new Semaphore(RESTAURANT_TABLE_COUNT, false);
-    private final Semaphore semaphoreWaiter = new Semaphore(RESTAURANT_WAITER_COUNT, true);
-    private final Semaphore semaphoreCooker = new Semaphore(RESTAURANT_COOK_COUNT, true);
+    private Semaphore semaphoreCustomer = new Semaphore(RESTAURANT_TABLE_COUNT, false);
+    private Semaphore semaphoreWaiter = new Semaphore(RESTAURANT_WAITER_COUNT, true);
+    private Semaphore semaphoreCooker = new Semaphore(RESTAURANT_COOK_COUNT, true);
 
-    private static final ExecutorService executorServiceCustomer = Executors.newFixedThreadPool(RESTAURANT_TABLE_COUNT);
-    private static final ExecutorService executorServiceWaiter = Executors.newFixedThreadPool(RESTAURANT_WAITER_COUNT);
-    private static final ExecutorService executorServiceCook = Executors.newFixedThreadPool(RESTAURANT_COOK_COUNT);
+    private ExecutorService executorServiceCustomer = Executors.newFixedThreadPool(RESTAURANT_TABLE_COUNT);
+    private ExecutorService executorServiceWaiter = Executors.newFixedThreadPool(RESTAURANT_WAITER_COUNT);
+    private ExecutorService executorServiceCook = Executors.newFixedThreadPool(RESTAURANT_COOK_COUNT);
     static int customerCount;
 
     public Restaurant(int customerCount) {
         Restaurant.customerCount = customerCount;
     }
 
-    void startSimulation(){
+    void startSimulation() {
+        for (int i = 0; i < customerCount; i++) {
+            executorServiceCustomer.submit(new Customer("Customer " + (i + 1), i + 1, semaphoreCustomer));
+        }
+        for (int i = 0; i < RESTAURANT_WAITER_COUNT; i++) {
+            executorServiceWaiter.submit(new Waiter("Cook " + (i + 1), semaphoreWaiter));
+        }
+        for (int i = 0; i < RESTAURANT_COOK_COUNT; i++) {
+            executorServiceCook.submit(new Cook("Cook " + (i + 1), semaphoreCooker));
+        }
+        executorServiceCustomer.shutdown();
+        executorServiceWaiter.shutdown();
+        executorServiceCook.shutdown();
 
+        try {
+            executorServiceCustomer.awaitTermination(1, TimeUnit.HOURS);
+            executorServiceWaiter.awaitTermination(1, TimeUnit.HOURS);
+            executorServiceCook.awaitTermination(1, TimeUnit.HOURS);
+        } catch (InterruptedException exception) {
+            exception.printStackTrace();
+        }
     }
+
     static int customerNumber;
 
     static boolean enterToTheRestaurant() {
@@ -110,21 +131,21 @@ public class Restaurant {
         return cookOrderClaim.remove(cook);
     }
 
-    static void cookOrderCompleted(Cook cook,int orderNum,String food){
+    static void cookOrderCompleted(Cook cook, int orderNum, String food) {
         cookCompletedOrders.add(orderNum);
-        System.out.println(cook.toString()+" completed the "+ food+" order number"+orderNum);
+        System.out.println(cook.toString() + " completed the " + food + " order number" + orderNum);
     }
 
-    static boolean checkWaiterOrderStatus(int orderNum){
+    static boolean checkWaiterOrderStatus(int orderNum) {
         return cookCompletedOrders.contains(orderNum);
     }
 
-    static void waiterOrderCompleted(Waiter waiter,int orderNum){
+    static void waiterOrderCompleted(Waiter waiter, int orderNum) {
         waiterCompletedOrders.add(orderNum);
-        System.out.println(waiter.toString()+" received the completed order number "+ orderNum +"from the cook.");
+        System.out.println(waiter.toString() + " received the completed order number " + orderNum + "from the cook.");
     }
 
-    static boolean checkOrderCompleted(int orderNum){
+    static boolean checkOrderCompleted(int orderNum) {
         return waiterCompletedOrders.contains(orderNum);
     }
 }
