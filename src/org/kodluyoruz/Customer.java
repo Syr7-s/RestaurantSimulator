@@ -42,7 +42,7 @@ public class Customer implements Runnable {
                 customerWaiting = false;
                 Thread.sleep(3000);
                 if (Restaurant.checkOrderCompleted(customerOrderNumber)) {
-                    System.out.println(this.customerName + "   received the number " + customerOrderNumber + " " + food + "order she wanted on time.");
+                    System.out.println(this.customerName + "   received the number " + customerOrderNumber + " " + food + "order the customer wanted on time.");
                     System.out.println(this.customerName + " is eating food.");
                     System.out.println(this.customerName + " is leaving from Restaurant.");
                 } else {
