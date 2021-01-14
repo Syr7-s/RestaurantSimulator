@@ -105,6 +105,9 @@ public class Restaurant {
         return cookCompletedOrders.contains(orderNum);
     }
 
-
+    static void waiterOrderCompleted(Waiter waiter,int orderNum){
+        waiterCompletedOrders.add(orderNum);
+        System.out.println(waiter.toString()+" received the completed order number "+ orderNum +"from the cook.");
+    }
 
 }
