@@ -31,11 +31,11 @@ public class Waiter implements Runnable {
                     System.out.println("Order is not for now.");
                 }
 
-                //Thread.sleep(2000);
+                Thread.sleep(2000);
                 boolean waiterWaiting = true;
                 while (waiterWaiting) {
                     waiterWaiting = false;
-                    //Thread.sleep(300);
+                    Thread.sleep(300);
                     if (Restaurant.checkWaiterOrderStatus(orderNum)) {
                         Restaurant.waiterOrderCompleted(this, orderNum);
                     } else {
