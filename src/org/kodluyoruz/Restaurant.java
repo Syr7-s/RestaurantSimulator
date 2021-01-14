@@ -32,9 +32,9 @@ public class Restaurant {
     private Semaphore semaphoreWaiter = new Semaphore(RESTAURANT_WAITER_COUNT, true);
     private Semaphore semaphoreCooker = new Semaphore(RESTAURANT_COOK_COUNT, true);
 
-    private ExecutorService executorServiceCustomer = Executors.newFixedThreadPool(RESTAURANT_TABLE_COUNT);
-    private ExecutorService executorServiceWaiter = Executors.newFixedThreadPool(RESTAURANT_WAITER_COUNT);
-    private ExecutorService executorServiceCook = Executors.newFixedThreadPool(RESTAURANT_COOK_COUNT);
+    private static final ExecutorService executorServiceCustomer = Executors.newFixedThreadPool(RESTAURANT_TABLE_COUNT);
+    private static final ExecutorService executorServiceWaiter = Executors.newFixedThreadPool(RESTAURANT_WAITER_COUNT);
+    private static final ExecutorService executorServiceCook = Executors.newFixedThreadPool(RESTAURANT_COOK_COUNT);
     static int customerCount;
 
     public Restaurant(int customerCount) {
@@ -56,9 +56,9 @@ public class Restaurant {
         executorServiceCook.shutdown();
 
         try {
-            executorServiceCustomer.awaitTermination(1, TimeUnit.HOURS);
-            executorServiceWaiter.awaitTermination(1, TimeUnit.HOURS);
-            executorServiceCook.awaitTermination(1, TimeUnit.HOURS);
+            executorServiceCustomer.awaitTermination(1, TimeUnit.DAYS);
+            executorServiceWaiter.awaitTermination(1, TimeUnit.DAYS);
+            executorServiceCook.awaitTermination(1, TimeUnit.DAYS);
         } catch (InterruptedException exception) {
             exception.printStackTrace();
         }

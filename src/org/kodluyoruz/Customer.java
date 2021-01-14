@@ -29,9 +29,11 @@ public class Customer implements Runnable {
         try {
             semaphore.acquire();
             System.out.println(this + " is entering to Restaurant.");
-            Thread.sleep(100);
+            boolean enterRestaurant = false;
+            while (!enterRestaurant) {
+                enterRestaurant = Restaurant.enterToTheRestaurant();
+            }
             System.out.println(this + " givint to order.");
-            Thread.sleep(250);
             food = foodInstance.getFoods().get(random.nextInt(foodInstance.getFoods().size()));
             Restaurant.customerPlaceOrder(this.customerOrderNumber, food);
             Thread.sleep(2000);
@@ -40,18 +42,17 @@ public class Customer implements Runnable {
                 customerWaiting = false;
                 Thread.sleep(3000);
                 if (Restaurant.checkOrderCompleted(customerOrderNumber)) {
-                    System.out.println("The Customer " + this.customerName + "   received the number+" + customerOrderNumber + " " + food + "order she wanted on time.");
+                    System.out.println("The Customer " + this.customerName + "   received the number " + customerOrderNumber + " " + food + "order she wanted on time.");
                     System.out.println("The Customer " + this.customerName + " is eating food.");
-                    //Thread.sleep(300);
                     System.out.println(this.customerName + " is leaving from Restaurant");
                 } else {
-                    System.out.println(this.customerName + " adli musterinin siparisi bazı aksaklıklardan dolayı tamamlanamadi.\n" +
+                    System.out.println(this.customerName +
                                 "The customer could not get the order customer requested.\n" +
                                 this.customerName + " is leaving from Restaurant.");
                 }
 
             }
-          //  Restaurant.customerLeaveRestaurant();
+            Restaurant.customerLeaveRestaurant();
         } catch (InterruptedException exception) {
             System.out.println("The Customer is leaving from Restaurant.\nBecause Unexpected a situation occurred.");
         }
