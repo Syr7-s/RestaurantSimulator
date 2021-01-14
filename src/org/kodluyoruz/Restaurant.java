@@ -11,4 +11,15 @@ public class Restaurant {
         Restaurant.customerCount = customerCount;
     }
 
+    static int customerNumber;
+    static boolean enterToTheRestaurant (){
+        if (customerNumber<RESTAURANT_TABLE_COUNT){
+            customerNumber++;
+            return true;
+        }else
+            return false;
+    }
+    static void customerLeaveRestaurant(){
+        customerNumber--;
+    }
 }
