@@ -2,7 +2,7 @@ package org.kodluyoruz;
 
 import java.util.concurrent.Semaphore;
 
-public class Waiter {
+public class Waiter implements Runnable{
     private String waiterName;
     private int orderNum;
     private Semaphore semaphore;
@@ -15,5 +15,10 @@ public class Waiter {
     @Override
     public String toString() {
         return this.waiterName;
+    }
+
+    @Override
+    public void run() {
+
     }
 }
