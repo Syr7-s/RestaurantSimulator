@@ -3,7 +3,7 @@ package org.kodluyoruz;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
-public class Customer {
+public class Customer implements Runnable{
     Random random = new Random();
 
     private Food foodInstance = Food.getInstance();
@@ -22,5 +22,10 @@ public class Customer {
     @Override
     public String toString() {
         return this.customerName;
+    }
+
+    @Override
+    public void run() {
+
     }
 }
