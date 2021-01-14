@@ -3,7 +3,7 @@ package org.kodluyoruz;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
-public class Customer implements Runnable{
+public class Customer implements Runnable {
     Random random = new Random();
 
     private Food foodInstance = Food.getInstance();
@@ -26,6 +26,35 @@ public class Customer implements Runnable{
 
     @Override
     public void run() {
+        try {
+            semaphore.acquire();
+            System.out.println(this + " is entering to Restaurant.");
+            Thread.sleep(100);
+            System.out.println(this + " givint to order.");
+            Thread.sleep(250);
+            food = foodInstance.getFoods().get(random.nextInt(foodInstance.getFoods().size()));
+            Restaurant.customerPlaceOrder(this.customerOrderNumber, food);
+            Thread.sleep(2000);
+            boolean customerWaiting = true;
+            while (customerWaiting) {
+                customerWaiting = false;
+                Thread.sleep(3000);
+                if (Restaurant.checkOrderCompleted(customerOrderNumber)) {
+                    System.out.println("The Customer " + this.customerName + "   received the number+" + customerOrderNumber + " " + food + "order she wanted on time.");
+                    System.out.println("The Customer " + this.customerName + " is eating food.");
+                    Thread.sleep(300);
+                    System.out.println(this.customerName + " is leaving from Restaurant");
+                } else {
+                    System.out.println(this.customerName + " adli musterinin siparisi bazı aksaklıklardan dolayı tamamlanamadi.\n" +
+                                "The customer could not get the order customer requested.\n" +
+                                this.customerName + " is leaving from Restaurant.");
+                }
 
+            }
+          //  Restaurant.customerLeaveRestaurant();
+        } catch (InterruptedException exception) {
+            System.out.println("The Customer is leaving from Restaurant.\nBecause Unexpected a situation occurred.");
+        }
+        semaphore.release();
     }
 }
