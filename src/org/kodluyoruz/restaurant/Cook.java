@@ -61,7 +61,7 @@ public class Cook implements Runnable {
                     cookWaiting = false;
                     if (Restaurant.cookOrderAvailable(this)) {
                         if (!Restaurant.cookOrderNumClaim.isEmpty()) {
-                            orderNum = Restaurant.cookGetOrderNum(this);
+                            orderNum = Restaurant.cookGetOrderNum.apply(this);
                             food = Restaurant.cookGetOrder.apply(this);
                             System.out.println("Cook named " + this.cookName + " received the order of " + food + " number " + orderNum);
                             Thread.sleep(1000);
