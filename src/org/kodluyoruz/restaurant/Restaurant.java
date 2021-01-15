@@ -74,7 +74,7 @@ public class Restaurant {
         } else return false;
     }
 
-    static boolean cookOrderAvailable(Cook cook) {
+    static Predicate<Cook> cookOrderAvailable = (cook) ->{
         if (!waiterOrderPlaced.isEmpty()) {
             try {
                 int waiterOrderNum = waiterOrderList.pop();
@@ -82,12 +82,13 @@ public class Restaurant {
                 cookOrderNumClaim.put(cook, waiterOrderNum);
                 return true;
             } catch (RuntimeException exception) {
-                System.out.println("Order is not available. We are sorry.");
+                System.out.println("Unexpected a accured in the Restaurant.");
                 return false;
             }
-        } else return false;
-    }
-
+        } else {
+            return false;
+        }
+    };
     static int waiterGetOrderNum(Waiter waiter) {
         return waiterOrderNumClaim.remove(waiter);
     }

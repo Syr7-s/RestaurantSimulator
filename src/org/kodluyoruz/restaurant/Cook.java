@@ -59,7 +59,7 @@ public class Cook implements Runnable {
             while (cookWaiting) {
                 for (int i = 0; i <= Restaurant.waiterOrderList.size(); i++) {
                     cookWaiting = false;
-                    if (Restaurant.cookOrderAvailable(this)) {
+                    if (Restaurant.cookOrderAvailable.test(this)) {
                         if (!Restaurant.cookOrderNumClaim.isEmpty()) {
                             orderNum = Restaurant.cookGetOrderNum.apply(this);
                             food = Restaurant.cookGetOrder.apply(this);
