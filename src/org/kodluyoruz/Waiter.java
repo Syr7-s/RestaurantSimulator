@@ -7,6 +7,7 @@ public class Waiter implements Runnable {
     private int orderNum;
     private Semaphore semaphore;
     private String food;
+
     public Waiter(String waiterName, Semaphore semaphore) {
         this.waiterName = waiterName;
         this.semaphore = semaphore;
@@ -26,7 +27,7 @@ public class Waiter implements Runnable {
                 if (Restaurant.orderAvailable(this)) {
                     orderNum = Restaurant.waiterGetOrderNum(this);
                     food = Restaurant.waiterGetOrder(this);
-                    System.out.println("Waiter named "+this +" received the order of "+food+" number "+ orderNum+".");
+                    System.out.println("Waiter named " + this + " received the order of " + food + " number " + orderNum + ".");
                 } else {
                     System.out.println("Order is not for now.");
                 }
@@ -39,9 +40,9 @@ public class Waiter implements Runnable {
                     if (Restaurant.checkWaiterOrderStatus(orderNum)) {
                         Restaurant.waiterOrderCompleted(this, orderNum);
                     } else {
-                        System.out.println("Waiter named "+this +" did not receive the order of "+food+" number "+ orderNum+" from Cook");
+                        System.out.println("Waiter named " + this + " did not receive the order of " + food + " number " + orderNum + " from Cook");
                     }
-                    System.out.println("Waiter named "+this+" job is over.");
+                    System.out.println("Waiter named " + this + " job is over.");
                 }
             }
         } catch (InterruptedException exception) {
