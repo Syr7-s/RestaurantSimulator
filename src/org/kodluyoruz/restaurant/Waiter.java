@@ -3,9 +3,9 @@ package org.kodluyoruz.restaurant;
 import java.util.concurrent.Semaphore;
 
 public class Waiter implements Runnable {
-    private String waiterName;
+    private String waiterName = null;
     private int orderNum;
-    private Semaphore semaphore;
+    private Semaphore semaphore = null;
     private String food;
 
     public Waiter(String waiterName, Semaphore semaphore) {
