@@ -39,14 +39,13 @@ public class Restaurant {
         restaurantSimulation.startSimulation();
     }
 
-
-    static boolean enterToTheRestaurant() {
+    static Supplier<Boolean> enterToTheRestaurant = () -> {
         if (customerNumber < RESTAURANT_TABLE_COUNT) {
             customerNumber++;
             return true;
         } else
             return false;
-    }
+    };
 
     static void customerLeaveRestaurant() {
         customerNumber--;
