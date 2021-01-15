@@ -28,20 +28,23 @@ public class Restaurant {
     static List<Integer> cookCompletedOrders = new ArrayList<>();
     private static List<Integer> waiterCompletedOrders = new ArrayList<>();
 
-    private Semaphore semaphoreCustomer = new Semaphore(RESTAURANT_TABLE_COUNT, false);
+/*    private Semaphore semaphoreCustomer = new Semaphore(RESTAURANT_TABLE_COUNT, false);
     private Semaphore semaphoreWaiter = new Semaphore(RESTAURANT_WAITER_COUNT, true);
     private Semaphore semaphoreCooker = new Semaphore(RESTAURANT_COOK_COUNT, true);
 
     private static final ExecutorService executorServiceCustomer = Executors.newFixedThreadPool(RESTAURANT_TABLE_COUNT);
     private static final ExecutorService executorServiceWaiter = Executors.newFixedThreadPool(RESTAURANT_WAITER_COUNT);
     private static final ExecutorService executorServiceCook = Executors.newFixedThreadPool(RESTAURANT_COOK_COUNT);
-    static int customerCount;
-
+  */
+    static int customerCount = 10;
+    private RestaurantSimulation restaurantSimulation;
     public Restaurant(int customerCount) {
-        Restaurant.customerCount = customerCount;
+        //Restaurant.customerCount = customerCount;
+        restaurantSimulation=new RestaurantSimulation();
+        restaurantSimulation.startSimulation();
     }
 
-    void startSimulation() {
+  /*  void startSimulation() {
         for (int i = 0; i < customerCount; i++) {
             executorServiceCustomer.submit(new Customer("Customer " + (i + 1), i + 1, semaphoreCustomer));
         }
@@ -64,7 +67,7 @@ public class Restaurant {
         }
         System.out.println("The Simulation is terminating.");
     }
-
+*/
     static int customerNumber;
 
     static boolean enterToTheRestaurant() {
