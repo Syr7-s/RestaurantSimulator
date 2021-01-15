@@ -10,4 +10,7 @@ public class RestaurantAppContext {
         return new Restaurant(restaurantSimulation);
     }
 
+    public Food food(){
+        return Food.getInstance();
+    }
 }
