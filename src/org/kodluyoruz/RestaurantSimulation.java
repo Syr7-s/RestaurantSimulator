@@ -16,7 +16,7 @@ public class RestaurantSimulation {
     private static final ExecutorService executorServiceCook = Executors.newFixedThreadPool(Restaurant.RESTAURANT_COOK_COUNT);
 
     void startSimulation() {
-        for (int i = 0; i < Restaurant.customerCount; i++) {
+        for (int i = 0; i < Restaurant.CUSTOMER_COUNT; i++) {
             executorServiceCustomer.submit(new Customer("Customer " + (i + 1), i + 1, semaphoreCustomer));
         }
         for (int i = 0; i < Restaurant.RESTAURANT_WAITER_COUNT; i++) {

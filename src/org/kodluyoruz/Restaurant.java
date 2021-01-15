@@ -4,39 +4,32 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
+
 
 public class Restaurant {
+
     static final int RESTAURANT_TABLE_COUNT = 5;
     static final int RESTAURANT_WAITER_COUNT = 3;
     static final int RESTAURANT_COOK_COUNT = 2;
+    static final int CUSTOMER_COUNT = 10;
 
     static LinkedList<Integer> orderList = new LinkedList<>();
-    private static HashMap<Integer, String> orderPlaced = new HashMap<>();
-
-    static LinkedList<Integer> waiterOrderList = new LinkedList<>();
-    private static HashMap<Integer, String> waiterOrderPlaced = new HashMap<>();
-    private static HashMap<Waiter, String> waiterOrderClaim = new HashMap<>();
-    static HashMap<Waiter, Integer> waiterOrderNumClaim = new HashMap<>();
-
     static HashMap<Cook, String> cookOrderClaim = new HashMap<>();
     static HashMap<Cook, Integer> cookOrderNumClaim = new HashMap<>();
-
     static List<Integer> cookCompletedOrders = new ArrayList<>();
+    static LinkedList<Integer> waiterOrderList = new LinkedList<>();
+    static HashMap<Waiter, Integer> waiterOrderNumClaim = new HashMap<>();
+
+    private static HashMap<Integer, String> orderPlaced = new HashMap<>();
+    private static HashMap<Integer, String> waiterOrderPlaced = new HashMap<>();
+    private static HashMap<Waiter, String> waiterOrderClaim = new HashMap<>();
     private static List<Integer> waiterCompletedOrders = new ArrayList<>();
 
-/*    private Semaphore semaphoreCustomer = new Semaphore(RESTAURANT_TABLE_COUNT, false);
-    private Semaphore semaphoreWaiter = new Semaphore(RESTAURANT_WAITER_COUNT, true);
-    private Semaphore semaphoreCooker = new Semaphore(RESTAURANT_COOK_COUNT, true);
 
-    private static final ExecutorService executorServiceCustomer = Executors.newFixedThreadPool(RESTAURANT_TABLE_COUNT);
-    private static final ExecutorService executorServiceWaiter = Executors.newFixedThreadPool(RESTAURANT_WAITER_COUNT);
-    private static final ExecutorService executorServiceCook = Executors.newFixedThreadPool(RESTAURANT_COOK_COUNT);
-  */
-    static int customerCount = 10;
+
+
+
+
     private RestaurantSimulation restaurantSimulation;
     public Restaurant(RestaurantSimulation restaurantSimulation/*int customerCount*/) {
         //Restaurant.customerCount = customerCount;
@@ -44,30 +37,6 @@ public class Restaurant {
         restaurantSimulation.startSimulation();
     }
 
-  /*  void startSimulation() {
-        for (int i = 0; i < customerCount; i++) {
-            executorServiceCustomer.submit(new Customer("Customer " + (i + 1), i + 1, semaphoreCustomer));
-        }
-        for (int i = 0; i < RESTAURANT_WAITER_COUNT; i++) {
-            executorServiceWaiter.submit(new Waiter("Waiter " + (i + 1), semaphoreWaiter));
-        }
-        for (int i = 0; i < RESTAURANT_COOK_COUNT; i++) {
-            executorServiceCook.submit(new Cook("Cook " + (i + 1), semaphoreCooker));
-        }
-        executorServiceCustomer.shutdown();
-        executorServiceWaiter.shutdown();
-        executorServiceCook.shutdown();
-
-        try {
-            executorServiceCustomer.awaitTermination(1, TimeUnit.DAYS);
-            executorServiceWaiter.awaitTermination(1, TimeUnit.DAYS);
-            executorServiceCook.awaitTermination(1, TimeUnit.DAYS);
-        } catch (InterruptedException exception) {
-            exception.printStackTrace();
-        }
-        System.out.println("The Simulation is terminating.");
-    }
-*/
     static int customerNumber;
 
     static boolean enterToTheRestaurant() {
