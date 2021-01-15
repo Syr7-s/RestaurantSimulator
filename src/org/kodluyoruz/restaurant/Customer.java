@@ -87,8 +87,8 @@ public class Customer implements Runnable {
                     System.out.println(this.customerName + " is leaving from Restaurant.");
                 } else {
                     System.out.println(this.customerName +
-                                " could not get the order customer requested.\n" +
-                                this.customerName + " is leaving from Restaurant.");
+                            " could not get the order customer requested.\n" +
+                            this.customerName + " is leaving from Restaurant.");
                 }
 
             }

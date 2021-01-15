@@ -2,7 +2,7 @@ package org.kodluyoruz.restaurant;
 
 import java.util.concurrent.Semaphore;
 
-public class Cook implements Runnable{
+public class Cook implements Runnable {
     private String cookName;
     private int orderNum;
     private Semaphore semaphore;
@@ -55,15 +55,15 @@ public class Cook implements Runnable{
         try {
             semaphore.acquire();
             System.out.println(this.cookName + " cook will take the order.");
-            boolean cookWaiting =true;
+            boolean cookWaiting = true;
             while (cookWaiting) {
                 for (int i = 0; i <= Restaurant.waiterOrderList.size(); i++) {
-                    cookWaiting=false;
+                    cookWaiting = false;
                     if (Restaurant.cookOrderAvailable(this)) {
                         if (!Restaurant.cookOrderNumClaim.isEmpty()) {
                             orderNum = Restaurant.cookGetOrderNum(this);
                             food = Restaurant.cookGetOrder(this);
-                            System.out.println("Cook named "+this.cookName +" received the order of "+food+" number "+ orderNum);
+                            System.out.println("Cook named " + this.cookName + " received the order of " + food + " number " + orderNum);
                             Thread.sleep(1000);
                             Restaurant.cookOrderCompleted(this, orderNum, food);
                         } else {
@@ -72,10 +72,10 @@ public class Cook implements Runnable{
                         }
 
                     } else {
-                        System.out.println("Cook named "+this.cookName+" is not available.");
+                        System.out.println("Cook named " + this.cookName + " is not available.");
                         return;
                     }
-                    System.out.println("Cook named "+this+" job is over.");
+                    System.out.println("Cook named " + this + " job is over.");
                 }
             }
         } catch (InterruptedException exception) {
