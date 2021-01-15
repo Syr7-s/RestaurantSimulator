@@ -7,7 +7,6 @@ public class Customer implements Runnable {
     Random random = new Random();
 
     private Food foodInstance;
-
     private String customerName;
     private int customerOrderNumber;
     private String food;
@@ -18,6 +17,46 @@ public class Customer implements Runnable {
         this.customerOrderNumber = customerOrderNumber;
         this.semaphore = semaphore;
         this.foodInstance = food;
+    }
+
+    public Food getFoodInstance() {
+        return foodInstance;
+    }
+
+    private void setFoodInstance(Food foodInstance) {
+        this.foodInstance = foodInstance;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    private void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public int getCustomerOrderNumber() {
+        return customerOrderNumber;
+    }
+
+    private void setCustomerOrderNumber(int customerOrderNumber) {
+        this.customerOrderNumber = customerOrderNumber;
+    }
+
+    public String getFood() {
+        return food;
+    }
+
+    private void setFood(String food) {
+        this.food = food;
+    }
+
+    public Semaphore getSemaphore() {
+        return semaphore;
+    }
+
+    private void setSemaphore(Semaphore semaphore) {
+        this.semaphore = semaphore;
     }
 
     @Override
