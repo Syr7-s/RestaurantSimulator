@@ -25,12 +25,8 @@ public class Restaurant {
     private static HashMap<Waiter, String> waiterOrderClaim = new HashMap<>();
     private static List<Integer> waiterCompletedOrders = new ArrayList<>();
 
-
-
-
-
-
     private RestaurantSimulation restaurantSimulation;
+
     public Restaurant(RestaurantSimulation restaurantSimulation/*int customerCount*/) {
         //Restaurant.customerCount = customerCount;
         this.restaurantSimulation=restaurantSimulation;
