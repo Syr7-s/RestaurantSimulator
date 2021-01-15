@@ -13,6 +13,38 @@ public class Cook implements Runnable{
         this.semaphore = semaphore;
     }
 
+    public String getCookName() {
+        return cookName;
+    }
+
+    private void setCookName(String cookName) {
+        this.cookName = cookName;
+    }
+
+    public int getOrderNum() {
+        return orderNum;
+    }
+
+    private void setOrderNum(int orderNum) {
+        this.orderNum = orderNum;
+    }
+
+    public Semaphore getSemaphore() {
+        return semaphore;
+    }
+
+    private void setSemaphore(Semaphore semaphore) {
+        this.semaphore = semaphore;
+    }
+
+    public String getFood() {
+        return food;
+    }
+
+    private void setFood(String food) {
+        this.food = food;
+    }
+
     @Override
     public String toString() {
         return this.cookName;
