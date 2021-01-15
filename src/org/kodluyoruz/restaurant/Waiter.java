@@ -56,8 +56,8 @@ public class Waiter implements Runnable {
             semaphore.acquire();
             System.out.println(this.waiterName + " waiter will take the order.");
             for (int i = 0; i <= Restaurant.orderList.size(); i++) {
-                if (Restaurant.orderAvailable.test(this)/*Restaurant.orderAvailable(this)*/) {
-                    orderNum = Restaurant.waiterGetOrderNum(this);
+                if (Restaurant.orderAvailable.test(this)) {
+                    orderNum = Restaurant.waiterGetOrderNum.apply(this);
                     food = Restaurant.waiterGetOrder.apply(this);
                     System.out.println("Waiter named " + this + " received the order of " + food + " number " + orderNum + ".");
                 } else {

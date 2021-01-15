@@ -91,9 +91,7 @@ public class Restaurant {
         }
     };
 
-    static int waiterGetOrderNum(Waiter waiter) {
-        return waiterOrderNumClaim.remove(waiter);
-    }
+    static Function<Waiter, Integer> waiterGetOrderNum = (waiter -> waiterOrderNumClaim.remove(waiter));
 
     static Function<Waiter, String> waiterGetOrder = (waiter -> waiterOrderClaim.remove(waiter));
 
@@ -105,7 +103,6 @@ public class Restaurant {
         cookCompletedOrders.add(orderNum);
         System.out.println(cook.toString() + " completed the " + food + " order number " + orderNum);
     }
-
 
     static Predicate<Integer> checkWaiterOrderStatus = (orderNum) -> cookCompletedOrders.contains(orderNum);
 
