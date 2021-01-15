@@ -1,4 +1,4 @@
-package org.kodluyoruz;
+package org.kodluyoruz.restaurant;
 
 import java.util.concurrent.Semaphore;
 

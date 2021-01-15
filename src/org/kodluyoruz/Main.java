@@ -1,6 +1,8 @@
 package org.kodluyoruz;
 
 import org.kodluyoruz.context.RestaurantAppContext;
+import org.kodluyoruz.restaurant.Food;
+import org.kodluyoruz.restaurant.Restaurant;
 
 public class Main {
 
@@ -8,7 +10,7 @@ public class Main {
         // write your code here
         RestaurantAppContext restaurantAppContext = new RestaurantAppContext();
         Food food = restaurantAppContext.food();
-        System.out.println("There are "+Restaurant.RESTAURANT_TABLE_COUNT+" tables in the restaurant.\n" +
+        System.out.println("There are "+ Restaurant.RESTAURANT_TABLE_COUNT+" tables in the restaurant.\n" +
                 "Restaurant customer capacity is "+Restaurant.CUSTOMER_COUNT +".\n"+Restaurant.RESTAURANT_WAITER_COUNT+
                 " waiters and"+ Restaurant.RESTAURANT_COOK_COUNT +"cooks work in the Restaurant.\n" +
                 "Food Types: \n" +

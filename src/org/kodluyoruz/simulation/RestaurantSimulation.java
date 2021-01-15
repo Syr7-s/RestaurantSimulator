@@ -1,9 +1,9 @@
 package org.kodluyoruz.simulation;
 
-import org.kodluyoruz.Cook;
-import org.kodluyoruz.Customer;
-import org.kodluyoruz.Restaurant;
-import org.kodluyoruz.Waiter;
+import org.kodluyoruz.restaurant.Cook;
+import org.kodluyoruz.restaurant.Customer;
+import org.kodluyoruz.restaurant.Restaurant;
+import org.kodluyoruz.restaurant.Waiter;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
