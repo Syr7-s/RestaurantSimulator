@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 
 public class Restaurant {
@@ -24,6 +25,7 @@ public class Restaurant {
     static List<Integer> cookCompletedOrders = new ArrayList<>();
     static LinkedList<Integer> waiterOrderList = new LinkedList<>();
     static HashMap<Waiter, Integer> waiterOrderNumClaim = new HashMap<>();
+    static int customerNumber;
 
     private static HashMap<Integer, String> orderPlaced = new HashMap<>();
     private static HashMap<Integer, String> waiterOrderPlaced = new HashMap<>();
@@ -37,7 +39,6 @@ public class Restaurant {
         restaurantSimulation.startSimulation();
     }
 
-    static int customerNumber;
 
     static boolean enterToTheRestaurant() {
         if (customerNumber < RESTAURANT_TABLE_COUNT) {
@@ -57,7 +58,7 @@ public class Restaurant {
         orderPlaced.put(orderNum, food);
     }
 
-    static boolean orderAvailable(Waiter waiter) {
+    static Predicate<Waiter> orderAvailable = (waiter) -> {
         if (!orderPlaced.isEmpty()) {
             try {
                 int orderNum = orderList.pop();
@@ -67,14 +68,15 @@ public class Restaurant {
                 waiterOrderNumClaim.put(waiter, orderNum);
                 return true;
             } catch (RuntimeException exception) {
-                System.out.println("Order is not available. We are sorry.");
+                System.out.println("Unexpected a accured in the Restaurant.");
                 return false;
             }
+        } else {
+            return false;
+        }
+    };
 
-        } else return false;
-    }
-
-    static Predicate<Cook> cookOrderAvailable = (cook) ->{
+    static Predicate<Cook> cookOrderAvailable = (cook) -> {
         if (!waiterOrderPlaced.isEmpty()) {
             try {
                 int waiterOrderNum = waiterOrderList.pop();
@@ -89,6 +91,7 @@ public class Restaurant {
             return false;
         }
     };
+
     static int waiterGetOrderNum(Waiter waiter) {
         return waiterOrderNumClaim.remove(waiter);
     }
