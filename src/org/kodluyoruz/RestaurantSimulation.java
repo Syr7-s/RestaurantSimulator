@@ -6,6 +6,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 public class RestaurantSimulation {
+
     private Semaphore semaphoreCustomer = new Semaphore(Restaurant.RESTAURANT_TABLE_COUNT, false);
     private Semaphore semaphoreWaiter = new Semaphore(Restaurant.RESTAURANT_WAITER_COUNT, true);
     private Semaphore semaphoreCooker = new Semaphore(Restaurant.RESTAURANT_COOK_COUNT, true);
