@@ -66,7 +66,7 @@ public class Restaurant {
                 waiterOrderNumClaim.put(waiter, orderNum);
                 return true;
             } catch (RuntimeException exception) {
-                System.out.println("Unexpected a accured in the Restaurant.");
+                System.out.println("Unexpected a occurred in the Restaurant.");
                 return false;
             }
         } else {
