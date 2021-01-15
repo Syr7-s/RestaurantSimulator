@@ -3,14 +3,46 @@ package org.kodluyoruz.restaurant;
 import java.util.concurrent.Semaphore;
 
 public class Waiter implements Runnable {
-    private String waiterName = null;
+    private String waiterName;
     private int orderNum;
-    private Semaphore semaphore = null;
+    private Semaphore semaphore;
     private String food;
 
     public Waiter(String waiterName, Semaphore semaphore) {
         this.waiterName = waiterName;
         this.semaphore = semaphore;
+    }
+
+    public String getWaiterName() {
+        return waiterName;
+    }
+
+    private void setWaiterName(String waiterName) {
+        this.waiterName = waiterName;
+    }
+
+    public int getOrderNum() {
+        return orderNum;
+    }
+
+    private void setOrderNum(int orderNum) {
+        this.orderNum = orderNum;
+    }
+
+    public Semaphore getSemaphore() {
+        return semaphore;
+    }
+
+    private void setSemaphore(Semaphore semaphore) {
+        this.semaphore = semaphore;
+    }
+
+    public String getFood() {
+        return food;
+    }
+
+    private void setFood(String food) {
+        this.food = food;
     }
 
     @Override
