@@ -38,9 +38,9 @@ public class Restaurant {
   */
     static int customerCount = 10;
     private RestaurantSimulation restaurantSimulation;
-    public Restaurant(int customerCount) {
+    public Restaurant(RestaurantSimulation restaurantSimulation/*int customerCount*/) {
         //Restaurant.customerCount = customerCount;
-        restaurantSimulation=new RestaurantSimulation();
+        this.restaurantSimulation=restaurantSimulation;
         restaurantSimulation.startSimulation();
     }
 
