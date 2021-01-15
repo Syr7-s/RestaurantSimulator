@@ -1,4 +1,4 @@
-package org.kodluyoruz;
+package org.kodluyoruz.main;
 
 import org.kodluyoruz.context.RestaurantAppContext;
 import org.kodluyoruz.restaurant.Food;
