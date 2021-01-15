@@ -1,4 +1,8 @@
-package org.kodluyoruz;
+package org.kodluyoruz.context;
+
+import org.kodluyoruz.Food;
+import org.kodluyoruz.Restaurant;
+import org.kodluyoruz.simulation.RestaurantSimulation;
 
 public class RestaurantAppContext {
 

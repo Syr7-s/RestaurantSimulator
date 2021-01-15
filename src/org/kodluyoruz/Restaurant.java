@@ -1,5 +1,7 @@
 package org.kodluyoruz;
 
+import org.kodluyoruz.simulation.RestaurantSimulation;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,10 +10,11 @@ import java.util.List;
 
 public class Restaurant {
 
-    static final int RESTAURANT_TABLE_COUNT = 5;
-    static final int RESTAURANT_WAITER_COUNT = 3;
-    static final int RESTAURANT_COOK_COUNT = 2;
-    static final int CUSTOMER_COUNT = 10;
+
+    public static final int RESTAURANT_TABLE_COUNT = 5;
+    public static final int RESTAURANT_WAITER_COUNT = 3;
+    public static final int RESTAURANT_COOK_COUNT = 2;
+    public static final int CUSTOMER_COUNT = 10;
 
     static LinkedList<Integer> orderList = new LinkedList<>();
     static HashMap<Cook, String> cookOrderClaim = new HashMap<>();
@@ -29,7 +32,7 @@ public class Restaurant {
 
     public Restaurant(RestaurantSimulation restaurantSimulation/*int customerCount*/) {
         //Restaurant.customerCount = customerCount;
-        this.restaurantSimulation=restaurantSimulation;
+        this.restaurantSimulation = restaurantSimulation;
         restaurantSimulation.startSimulation();
     }
 
