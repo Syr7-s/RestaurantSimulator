@@ -6,7 +6,7 @@ public class Main {
         // write your code here
         //The number of customers was determined as 10
         RestaurantAppContext restaurantAppContext = new RestaurantAppContext();
-        Food food = Food.getInstance();
+        Food food = restaurantAppContext.food();
        // int customerCount = 10;
         System.out.println("There are "+Restaurant.RESTAURANT_TABLE_COUNT+" tables in the restaurant.\n" +
                 "Restaurant customer capacity is "+Restaurant.customerCount+".\n"+Restaurant.RESTAURANT_WAITER_COUNT+
