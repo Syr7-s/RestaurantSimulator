@@ -96,7 +96,7 @@ public class Restaurant {
 
     static Function<Cook, Integer> cookGetOrderNum = (cook -> cookOrderNumClaim.remove(cook));
 
-    static Function<Cook, String> cookGetOrder = (cook) -> cookOrderClaim.remove(cook);
+    static Function<Cook, String> cookGetOrder = (cook -> cookOrderClaim.remove(cook));
 
     static void cookOrderCompleted(Cook cook, int orderNum, String food) {
         cookCompletedOrders.add(orderNum);
