@@ -6,15 +6,15 @@ import org.kodluyoruz.simulation.RestaurantSimulation;
 
 public class RestaurantAppContext {
 
-    public RestaurantSimulation restaurantSimulation() {
-        return new RestaurantSimulation();
+    public RestaurantSimulation restaurantSimulation(Food food) {
+        return new RestaurantSimulation(food);
     }
 
     public Restaurant restaurant(RestaurantSimulation restaurantSimulation) {
         return new Restaurant(restaurantSimulation);
     }
 
-    public Food food(){
+    public Food food() {
         return Food.getInstance();
     }
 }

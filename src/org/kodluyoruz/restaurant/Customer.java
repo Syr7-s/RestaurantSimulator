@@ -6,17 +6,18 @@ import java.util.concurrent.Semaphore;
 public class Customer implements Runnable {
     Random random = new Random();
 
-    private Food foodInstance = Food.getInstance();
+    private Food foodInstance;
 
     private String customerName;
     private int customerOrderNumber;
     private String food;
     private Semaphore semaphore;
 
-    public Customer(String customerName, int customerOrderNumber, Semaphore semaphore) {
+    public Customer(String customerName, int customerOrderNumber, Semaphore semaphore, Food food) {
         this.customerName = customerName;
         this.customerOrderNumber = customerOrderNumber;
         this.semaphore = semaphore;
+        this.foodInstance = food;
     }
 
     @Override

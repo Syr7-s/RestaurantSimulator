@@ -1,9 +1,6 @@
 package org.kodluyoruz.simulation;
 
-import org.kodluyoruz.restaurant.Cook;
-import org.kodluyoruz.restaurant.Customer;
-import org.kodluyoruz.restaurant.Restaurant;
-import org.kodluyoruz.restaurant.Waiter;
+import org.kodluyoruz.restaurant.*;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,9 +17,14 @@ public class RestaurantSimulation {
     private static final ExecutorService executorServiceWaiter = Executors.newFixedThreadPool(Restaurant.RESTAURANT_WAITER_COUNT);
     private static final ExecutorService executorServiceCook = Executors.newFixedThreadPool(Restaurant.RESTAURANT_COOK_COUNT);
 
+    private Food food;
+    public RestaurantSimulation(Food food) {
+        this.food = food;
+    }
+
     public void startSimulation() {
         for (int i = 0; i < Restaurant.CUSTOMER_COUNT; i++) {
-            executorServiceCustomer.submit(new Customer("Customer " + (i + 1), i + 1, semaphoreCustomer));
+            executorServiceCustomer.submit(new Customer("Customer " + (i + 1), i + 1, semaphoreCustomer,food));
         }
         for (int i = 0; i < Restaurant.RESTAURANT_WAITER_COUNT; i++) {
             executorServiceWaiter.submit(new Waiter("Waiter " + (i + 1), semaphoreWaiter));

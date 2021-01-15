@@ -18,7 +18,7 @@ public class Main {
                 food.getFoods()+"\n" +
                 "----------------------------------------------");
 
-        Restaurant restaurant = restaurantAppContext.restaurant(restaurantAppContext.restaurantSimulation());
+        Restaurant restaurant = restaurantAppContext.restaurant(restaurantAppContext.restaurantSimulation(food));
 
     }
 }
