@@ -108,10 +108,11 @@ public class Restaurant {
         System.out.println(cook.toString() + " completed the " + food + " order number " + orderNum);
     }
 
-    static boolean checkWaiterOrderStatus(int orderNum) {
+    /*static boolean checkWaiterOrderStatus(int orderNum) {
         return cookCompletedOrders.contains(orderNum);
     }
-
+    */
+    static Predicate<Integer> checkWaiterOrderStatus = (orderNum) -> cookCompletedOrders.contains(orderNum);
     static void waiterOrderCompleted(Waiter waiter, int orderNum) {
         waiterCompletedOrders.add(orderNum);
         System.out.println(waiter.toString() + " received the completed order number " + orderNum + " from the cook.");

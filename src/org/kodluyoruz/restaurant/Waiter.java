@@ -69,7 +69,7 @@ public class Waiter implements Runnable {
                 while (waiterWaiting) {
                     waiterWaiting = false;
                     Thread.sleep(300);
-                    if (Restaurant.checkWaiterOrderStatus(orderNum)) {
+                    if (Restaurant.checkWaiterOrderStatus.test(orderNum)) {
                         Restaurant.waiterOrderCompleted(this, orderNum);
                     } else {
                         System.out.println("Waiter named " + this + " did not receive the order of " + food + " number " + orderNum + " from Cook");
