@@ -4,6 +4,8 @@ import org.kodluyoruz.context.RestaurantAppContext;
 import org.kodluyoruz.restaurant.Food;
 import org.kodluyoruz.restaurant.Restaurant;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,9 +16,9 @@ public class Main {
                 "Restaurant customer capacity is " + Restaurant.CUSTOMER_COUNT + ".\n" + Restaurant.RESTAURANT_WAITER_COUNT +
                 " waiters and " + Restaurant.RESTAURANT_COOK_COUNT + " cooks work in the Restaurant.\n" +
                 "Food Types: \n" +
-                "----------------------------------------------\n" +
-                food.getFoods() + "\n" +
                 "----------------------------------------------");
+        Arrays.stream(food.getFoods().toArray()).forEach(System.out::println);
+        System.out.println("----------------------------------------------");
 
         Restaurant restaurant = restaurantAppContext.restaurant(restaurantAppContext.restaurantSimulation(food));
 
