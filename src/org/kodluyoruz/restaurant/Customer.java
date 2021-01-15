@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 public class Customer implements Runnable {
+
     Random random = new Random();
 
     private Food foodInstance;

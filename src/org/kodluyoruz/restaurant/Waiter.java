@@ -3,6 +3,7 @@ package org.kodluyoruz.restaurant;
 import java.util.concurrent.Semaphore;
 
 public class Waiter implements Runnable {
+
     private String waiterName;
     private int orderNum;
     private Semaphore semaphore;
@@ -79,7 +80,6 @@ public class Waiter implements Runnable {
             }
         } catch (InterruptedException exception) {
             System.out.println("Waiter did not receive the order from Cook");
-
         }
         semaphore.release();
 

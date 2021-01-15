@@ -13,7 +13,6 @@ import java.util.function.Supplier;
 
 public class Restaurant {
 
-
     public static final int RESTAURANT_TABLE_COUNT = 5;
     public static final int RESTAURANT_WAITER_COUNT = 3;
     public static final int RESTAURANT_COOK_COUNT = 2;

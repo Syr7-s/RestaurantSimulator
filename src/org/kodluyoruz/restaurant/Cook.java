@@ -3,6 +3,7 @@ package org.kodluyoruz.restaurant;
 import java.util.concurrent.Semaphore;
 
 public class Cook implements Runnable {
+
     private String cookName;
     private int orderNum;
     private Semaphore semaphore;
@@ -68,9 +69,7 @@ public class Cook implements Runnable {
                             Restaurant.cookOrderCompleted(this, orderNum, food);
                         } else {
                             System.out.println("Order is not for now.");
-                            //return;
                         }
-
                     } else {
                         System.out.println("Cook named " + this.cookName + " is not available.");
                         return;
