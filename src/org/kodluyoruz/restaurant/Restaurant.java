@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Predicate;
 
 
 public class Restaurant {
@@ -116,7 +117,5 @@ public class Restaurant {
         System.out.println(waiter.toString() + " received the completed order number " + orderNum + " from the cook.");
     }
 
-    static boolean checkOrderCompleted(int orderNum) {
-        return waiterCompletedOrders.contains(orderNum);
-    }
+    static Predicate<Integer> checkOrderCompleted = (orderNum) -> waiterCompletedOrders.contains(orderNum);
 }
