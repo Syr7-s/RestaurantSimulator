@@ -12,7 +12,7 @@ public class Main {
         Food food = restaurantAppContext.food();
         System.out.println("There are "+ Restaurant.RESTAURANT_TABLE_COUNT+" tables in the restaurant.\n" +
                 "Restaurant customer capacity is "+Restaurant.CUSTOMER_COUNT +".\n"+Restaurant.RESTAURANT_WAITER_COUNT+
-                " waiters and"+ Restaurant.RESTAURANT_COOK_COUNT +"cooks work in the Restaurant.\n" +
+                " waiters and "+ Restaurant.RESTAURANT_COOK_COUNT +"cooks work in the Restaurant.\n" +
                 "Food Types: \n" +
                 "----------------------------------------------\n"+
                 food.getFoods()+"\n" +
