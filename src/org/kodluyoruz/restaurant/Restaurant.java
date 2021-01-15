@@ -92,9 +92,7 @@ public class Restaurant {
         return waiterOrderNumClaim.remove(waiter);
     }
 
-    static String waiterGetOrder(Waiter waiter) {
-        return waiterOrderClaim.remove(waiter);
-    }
+    static Function<Waiter, String> waiterGetOrder = (waiter -> waiterOrderClaim.remove(waiter));
 
     static Function<Cook, Integer> cookGetOrderNum = (cook -> cookOrderNumClaim.remove(cook));
 

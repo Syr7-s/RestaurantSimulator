@@ -58,7 +58,7 @@ public class Waiter implements Runnable {
             for (int i = 0; i <= Restaurant.orderList.size(); i++) {
                 if (Restaurant.orderAvailable(this)) {
                     orderNum = Restaurant.waiterGetOrderNum(this);
-                    food = Restaurant.waiterGetOrder(this);
+                    food = Restaurant.waiterGetOrder.apply(this);
                     System.out.println("Waiter named " + this + " received the order of " + food + " number " + orderNum + ".");
                 } else {
                     System.out.println("Order is not for now.");
