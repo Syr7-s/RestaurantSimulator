@@ -72,7 +72,7 @@ public class Customer implements Runnable {
             System.out.println(this.customerName + " is entering to Restaurant.");
             boolean enterRestaurant = false;
             while (!enterRestaurant) {
-                enterRestaurant = Restaurant.enterToTheRestaurant.get();//Restaurant.enterToTheRestaurant();
+                enterRestaurant = Restaurant.enterToTheRestaurant.get();
             }
             System.out.println(this + " giving to order.");
             food = foodInstance.getFoods().get(random.nextInt(foodInstance.getFoods().size()));
