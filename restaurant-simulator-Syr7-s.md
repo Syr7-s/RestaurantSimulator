@@ -1,0 +1,5 @@
+## Fibabanka Java Bootcamp 3. Hafta Ödevi Bilgilendirme Dosyası
+
+​	Ödev bir restorant simülasyon programıdır ve Java da Multithread kullanılarak hazırlanmıştır. Restoranda 5 masa 3 garson ve 2 şef bulunmaktadır. Restorana sırası ile müşteri gelmekte ve restoranda 5 masa da dolu ise diğer gelen müşteriler kuyrukda beklemektedir.Yemek siparişini verip ve teslim alan ya da sipariş verdiği halde belli süre sonunda siparişi alamayan müşteri restoranda ayrılır ve ayrıldığı gibi başka bir müşteri restorana girer.
+
+​	Yukarıda bahsedilen bilgiler doğrultusunda 4 ayrı paket oluşturulmuştur. Program ilk olarak main paketi içindeki Main classından başlar. Main classında ilk satırda RestaurantAppContext adlı class bulunmaktadır. Bu sınıf içinde 3 adet obje dönen metot vardır. Bu sınıflara ihtiyaç duyan metorlar RestaurantAppContext ile bir nesne oluşturup kullanabilir.Bunun amacı sınıflar arasında bağımlılığı en aza indirmek ve bu nesnelere ihtiyac duyan sınıfların çağrıldıkları yere parametre olarak verilerek kullanılacak sınıf içinde Constructor injection yöntemi ile ilgil nesne set edilerek kullanılabilmesi amaçlanmıştır.
